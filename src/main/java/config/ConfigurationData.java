@@ -10,20 +10,20 @@ import javax.enterprise.context.ApplicationScoped;
 public class ConfigurationData {
 
     @ConfigValue(watch = true)
-    private String profilId;
+    private String nazivDogodka;
 
-    public String getProfilId() {
-        return profilId;
+    public String getNazivDogodka() {
+        return nazivDogodka;
     }
 
-    public void setProfilId(String profilId) {
-        this.profilId = profilId;
+    public void setNazivDogodka(String nazivDogodka) {
+        this.nazivDogodka = nazivDogodka;
     }
 
     @Override
     public String toString() {
         return "ConfigurationData{" +
-                "profilId='" + profilId + '\'' +
+                "nazivDogodka='" + nazivDogodka + '\'' +
                 '}';
     }
 }
