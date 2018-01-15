@@ -10,20 +10,20 @@ import javax.enterprise.context.ApplicationScoped;
 public class ConfigurationData {
 
     @ConfigValue(watch = true)
-    private String nazivDogodka;
+    private String ime;
 
-    public String getNazivDogodka() {
-        return nazivDogodka;
+    public String getImeNovega() {
+        return ime;
     }
 
-    public void setNazivDogodka(String nazivDogodka) {
-        this.nazivDogodka = nazivDogodka;
+    public void setImeNovega(String ime) {
+        this.ime = ime;
     }
 
     @Override
     public String toString() {
         return "ConfigurationData{" +
-                "nazivDogodka='" + nazivDogodka + '\'' +
+                "imeNovega='" + ime + '\'' +
                 '}';
     }
 }

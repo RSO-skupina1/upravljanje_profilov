@@ -21,31 +21,35 @@ public class ProfilBean {
     @DiscoverService(value = "katalog_profilov-service", environment = "dev", version = "*")
     private WebTarget target;
 
-    @CircuitBreaker(requestVolumeThreshold = 2)
-    @Fallback(fallbackMethod = "getProfilFallback")
-    @Timeout
+   // @CircuitBreaker(requestVolumeThreshold = 2)
+    //@Fallback(fallbackMethod = "getProfilFallback")
+    //@Timeout
     public Profil getProfil(String profilId) {
         try {
+            System.out.println("NOTRI1: " + target.getUri());
             WebTarget service = target.path("v1/katalog_profilov");
-
-            Response katalogProfilovResponse = ClientBuilder.newClient().target(service.getUri())
+            System.out.println("NOTRI2: " + service.getUri());
+         //   Response katalogProfilovResponse = ClientBuilder.newClient().target(service.getUri())
+            Response katalogProfilovResponse = ClientBuilder.newClient().target("http://192.168.99.100:8082/v1/katalog_profilov")
                     .path(profilId).request().get();
-
-            return katalogProfilovResponse.readEntity(Profil.class);
+            System.out.println("NOTRI3: " + katalogProfilovResponse.getLocation());
+            Profil out = katalogProfilovResponse.readEntity(Profil.class);
+            System.out.println("IME: " + out.getIme());
+            return out;
         } catch (WebApplicationException e) {
             System.out.println(e);
         } catch (ProcessingException e) {
             System.out.println(e);
         }
-
+        System.out.println("PREDALEC");
         return null;
     }
 
     public Profil getProfilFallback(String profilId) {
 
         Profil p = new Profil();
-        p.setIme("Janez");
-        p.setPriimek("Novak");
+        p.setIme("NAPAKA");
+        p.setPriimek("NAPAKA");
         p.setId(profilId);
 
         return p;

@@ -4,11 +4,6 @@ kumuluzee:
   env:
     name: dev
 
-  server:
-      base-url: http://localhost:8080
-      http:
-        port: 8080
-
   config:
     start-retry-delay-ms: 500
     max-retry-delay-ms: 900000
@@ -22,4 +17,4 @@ kumuluzee:
     ping-interval: 15
 
 rest-endpoints:
-  naziv-dogodka: Konfiguracija
+  ime-novega: Konfiguracija
